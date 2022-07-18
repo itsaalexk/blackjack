@@ -14,8 +14,26 @@ const createDeck = ()=>{
             deck.push( especial + tipo)
         }
     }
-    console.log(deck)
+    
+    //utilizando la libreria underscore, baraja las cartas que hemos creado
+    deck = _.shuffle(deck)
+    return deck
 }
 
 createDeck()
 
+const pedirCarta= (card) =>{
+    if (deck.lenght === 0){
+        throw new Error ("No quedan cartas disponibles")
+    }
+    let carta = deck.pop()
+    return carta;    
+}
+pedirCarta()
+
+const valorCarta = (card) =>{
+    const valor = card.substring(0, card.length-1)
+    if ( isNaN(card))
+    console.log(valor)
+}
+valorCarta("2D")
