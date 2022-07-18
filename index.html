@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/poker-cards.ico">
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel = "stylesheet" href= "main.css">
+    <script defer src = "index.js"></script>
+    <title>BlackJack</title>
+</head>
+<body>
+    <header class ="title">BLACKJACK</header>
+    <div class ="row mt-2">
+        <div class="col text-center">
+            <button class = "btn btn-danger">Nuevo Juego</button>
+            <button class =" btn btn-primary">Pedir Carta</button>
+            <button class = "btn btn-primary">Detener</button>
+        </div>
+    </div>
+    <div class = "contenedor">
+        <div class ="fila">
+            <h1>Player  - 0</h1>
+            <div id ="jugador-cartas">
+                <img class ="card" src = "cartas/10S.png">
+                <img class ="card" src = "cartas/10C.png">
+                <img class ="card" src = "cartas/3D.png">
+                <img class ="card" src = "cartas/6H.png">
+            </div>
+        </div>
+    </div>
+    <div class = "contenedor">
+        <div class ="fila">
+            <h1>IA  - 0</h1>
+            <div id ="ordenador-cartas">
+                <img class ="card" src = "cartas/10S.png">
+                <img class ="card" src = "cartas/10C.png">
+                <img class ="card" src = "cartas/3D.png">
+                <img class ="card" src = "cartas/6H.png">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!--UNDERSCORE.JS LIBRARY-->
+ <script src ="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script>
+</body>
+</html>
