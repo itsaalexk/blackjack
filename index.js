@@ -6,6 +6,7 @@ const btnCarta = document.querySelector("#pedir")
 const divJugador = document.querySelector("#jugador-cartas")
 const divPc = document.querySelector("#ordenador-cartas");
 let puntos1 = document.querySelector("#ia")
+const bntStop = document.querySelector("#detener")
 let puntosJugador = 0;
     puntosIA      = 0;
 
@@ -63,7 +64,22 @@ const turnoIA = (puntosMin)=>{
         imgCarta.classList.add("card")
         divPc.append(imgCarta)
 
-        } while ( puntosIA < puntosMin )
+        if (puntosMin > 21){
+            break;
+        }
+
+        } while ( (puntosIA < puntosMin)  && (puntosMin <= 21));
+
+        setTimeout(()=>{
+            if (puntosJugador > puntosIA || puntosJugador === 21 || puntosIA > 21){
+                alert("El Jugador Gana")
+            } else if (puntosIa > puntosJugador || puntosIA === 21 || puntosJugador > 21){
+                alert("La IA Gana")
+            } else if (puntosJugador === puntosIA){
+                alert("Ha habido un empate")
+            }
+        },10)
+
     }
 
 
@@ -80,15 +96,12 @@ btnCarta.onclick = ()=>{
     imgCarta.classList.add("card")
     divJugador.append(imgCarta)
    
-    if (puntosJugador > 21){
-        alert("Has perdido")
-        btnCarta.disabled = true;
-    } else if (puntosJugador === 21){
-        alert("Has Ganado!")
-        btnCarta.disabled = true;
-    }
+}
+bntStop.onclick = ()=>{
+    btnCarta.disabled = true;
+    bntStop.disabled = true;
+    turnoIA(puntosJugador)
     
 
 }
 
-turnoIA(12)
