@@ -3,8 +3,11 @@ const tipos= ["C","D","H","S"]
 const tiposEspeciales = ["A","J","Q","K"];
 let puntos = document.querySelector("small")
 const btnCarta = document.querySelector("#pedir")
+const divJugador = document.querySelector("#jugador-cartas")
+const divPc = document.querySelector("#ordenador-cartas");
+let puntos1 = document.querySelector("#ia")
 let puntosJugador = 0;
-    puntosPc      = 0;
+    puntosIA      = 0;
 
     // Crea la baraja de cartas
 const createDeck = ()=>{
@@ -45,7 +48,22 @@ const valorCarta = (carta) =>{
     return ( isNaN( valor )) ?
             (valor === "A") ? 11 : 10
             : valor *1;
-    
+    }
+
+    // TURNO IA
+const turnoIA = (puntosMin)=>{
+        do{
+        const carta = pedirCarta();
+
+        puntosIA = puntosIA + valorCarta(carta);
+        puntos1.textContent = puntosIA
+
+        const imgCarta = document.createElement("img")
+        imgCarta.src =`cartas/${carta}.png`
+        imgCarta.classList.add("card")
+        divPc.append(imgCarta)
+
+        } while ( puntosIA < puntosMin )
     }
 
 
@@ -54,10 +72,23 @@ const valorCarta = (carta) =>{
 
 btnCarta.onclick = ()=>{
     const carta = pedirCarta();
-    console.log(carta)
     puntosJugador = puntosJugador + valorCarta(carta)
-    
-    
     puntos.textContent = puntosJugador
+
+    const imgCarta = document.createElement("img")
+    imgCarta.src =`cartas/${carta}.png`
+    imgCarta.classList.add("card")
+    divJugador.append(imgCarta)
+   
+    if (puntosJugador > 21){
+        alert("Has perdido")
+        btnCarta.disabled = true;
+    } else if (puntosJugador === 21){
+        alert("Has Ganado!")
+        btnCarta.disabled = true;
+    }
     
+
 }
+
+turnoIA(12)
