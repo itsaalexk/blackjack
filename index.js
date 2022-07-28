@@ -1,12 +1,13 @@
 let deck = [];
-const tipos= ["C","D","H","S"]
+const tipos= ["C","D","H","S"];
 const tiposEspeciales = ["A","J","Q","K"];
-let puntos = document.querySelector("small")
-const btnCarta = document.querySelector("#pedir")
-const divJugador = document.querySelector("#jugador-cartas")
+let puntos = document.querySelector("small");
+const btnCarta = document.querySelector("#pedir");
+const divJugador = document.querySelector("#jugador-cartas");
 const divPc = document.querySelector("#ordenador-cartas");
-let puntos1 = document.querySelector("#ia")
-const bntStop = document.querySelector("#detener")
+const btnNuevo = document.querySelector("#nuevo");
+let puntos1 = document.querySelector("#ia");
+const bntStop = document.querySelector("#detener");
 let puntosJugador = 0;
     puntosIA      = 0;
 
@@ -71,14 +72,16 @@ const turnoIA = (puntosMin)=>{
         } while ( (puntosIA < puntosMin)  && (puntosMin <= 21));
 
         setTimeout(()=>{
-            if (puntosJugador > puntosIA || puntosJugador === 21 || puntosIA > 21){
-                alert("El Jugador Gana")
-            } else if (puntosIa > puntosJugador || puntosIA === 21 || puntosJugador > 21){
-                alert("La IA Gana")
-            } else if (puntosJugador === puntosIA){
-                alert("Ha habido un empate")
-            }
-        },10)
+                if (puntosIA === puntosMin){
+                    alert("Ha habido un empate")
+                }else if (puntosMin > 21){
+                    alert("La IA gana!")
+                }else if (puntosIA > 21){
+                    alert ("El jugador Gana")
+                }else {
+                    alert ("La IA gana!")
+                }
+        },100)
 
     }
 
@@ -95,13 +98,35 @@ btnCarta.onclick = ()=>{
     imgCarta.src =`cartas/${carta}.png`
     imgCarta.classList.add("card")
     divJugador.append(imgCarta)
+
+    if (puntosJugador > 21){
+        alert("Has perdido")
+        btnCarta.disabled= true;
+        bntStop.disabled = true;
+        turnoIA()
+    }else if (puntosJugador === 21){
+        alert("Genial!!")
+        btnCarta.disabled = true;
+        bntStop.disabled = true;
+    }
    
 }
 bntStop.onclick = ()=>{
     btnCarta.disabled = true;
     bntStop.disabled = true;
     turnoIA(puntosJugador)
-    
-
 }
 
+
+btnNuevo.onclick = ()=>{
+    btnCarta.disabled = false;
+    bntStop.disabled = false;
+    deck= []
+    deck = createDeck();
+    puntosJugador = 0;
+    puntosIA = 0;
+    puntos.textContent = 0;
+    puntos1.textContent = 0;
+    divJugador.textContent = ""
+    divPc.textContent = ""
+}
