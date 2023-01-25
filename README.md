@@ -20,5 +20,4 @@ Un juego simple de blackjack en el que compites contra el ordenador y tu objetiv
 ![Screenshot from 2022-09-04 13-54-54](https://user-images.githubusercontent.com/106255458/188312075-f22b6c9d-a39c-4f5a-b105-910319d123c1.jpg)
 
 ### (NOTA)
-
 Este juego ha sido optimizado para el navegador de Google Chrome , por lo tanto para una mejor experiencia , recomendamos utilizar dicho navegador.
